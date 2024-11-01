@@ -1,0 +1,10 @@
+				@font-face {
+					font-family: 'alta';
+					src: url('/wp-content/uploads/useanyfont/1631alta.woff2') format('woff2'),
+						url('/wp-content/uploads/useanyfont/1631alta.woff') format('woff');
+					  font-display: auto;
+				}
+
+				.alta{font-family: 'alta' !important;}
+
+		
