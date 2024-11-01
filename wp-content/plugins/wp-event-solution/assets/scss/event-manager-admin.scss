@@ -1,0 +1,3387 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+@import "base";
+
+/*=============================
+//  etn top label manu
+===============================-- */
+
+body {
+
+  &.eventin_page_etn-event-settings,
+  &.eventin_page_etn-event-shortcode {
+    background-color: #ebecef;
+  }
+}
+
+.wrap {
+  margin: 0;
+}
+
+.etn-social-icon-search-input {
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.etn-social-icon-search-input .input-group .input-group-addon>i {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.etn-admin-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background: #fff;
+  padding: 15px;
+  align-items: center;
+  margin-bottom: 40px;
+  clear: both;
+
+  @media (min-width: 780px) {
+    padding: 15px 20px;
+    margin-left: -20px;
+  }
+
+  .etn-settings-title {
+    margin: 0;
+  }
+}
+
+.etn-admin-header-logo {
+  display: flex;
+  align-items: center;
+
+  .etn-header-title {
+    border-bottom: none;
+    padding: 0;
+    position: relative;
+    padding-left: 20px;
+    margin-left: 20px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      height: 24px;
+      background: #d6d7db;
+      margin: auto;
+    }
+
+    @media (max-width: 767px) {
+      padding-left: 12px;
+      margin-left: 12px;
+    }
+  }
+
+  .etn-settings-title {
+    font-size: 22px;
+    font-weight: 700;
+  }
+}
+
+.etn-logo-wrap {
+  display: flex;
+  align-items: center;
+
+  img {
+    max-width: 128px;
+  }
+}
+
+.etn-version {
+  font-size: 11px;
+  line-height: 11px;
+  color: #0d165e;
+  font-weight: 700;
+  border: 1px solid #ff4a97;
+  border-radius: 4px;
+  background-color: rgba(#ff4a97, 0.07);
+  display: inline-block;
+  padding: 2px 6px;
+  margin-left: 10px;
+}
+
+.etn-admin-menu-wrap {
+  position: relative;
+  padding-left: 40px;
+  margin-left: 40px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    height: 24px;
+    background: #d6d7db;
+    margin: auto;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+
+    li {
+      margin: 0;
+
+      a {
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: capitalize;
+        color: var(--dark-light);
+        text-decoration: none;
+        transition: all ease 0.4s;
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: -7px;
+          left: 0;
+          right: 0;
+          width: 5px;
+          height: 5px;
+          margin: auto;
+          background-color: #5d5dff;
+          transition: all ease 0.3s;
+          visibility: hidden;
+          opacity: 0;
+          border-radius: 50%;
+        }
+
+        &:hover,
+        &.active {
+          color: $primary-color;
+
+          &::after {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+      }
+
+      &:not(:last-child) {
+        margin-right: 30px;
+      }
+    }
+  }
+}
+
+.etn-admin-btn-wrap {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  .dropdown {
+    position: absolute;
+    cursor: context-menu;
+    top: 70px;
+    right: 0;
+    z-index: 1;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    min-width: 200px;
+    max-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      top: -10px;
+      right: 25px;
+      border-bottom: 10px solid white;
+      margin-top: 0;
+      z-index: 1;
+    }
+
+    .list-item {
+      a {
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--dark-light);
+        display: flex;
+        align-items: center;
+        transition: all 0.2s ease;
+        text-decoration: none;
+
+        span {
+          display: inline-block;
+          margin-left: 9px;
+          border-bottom: 1px solid var(--dark-light);
+        }
+
+        &:not(:last-child) {
+          margin-bottom: 25px;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    .dropdown {
+      opacity: 1;
+      visibility: visible;
+      top: 60px;
+    }
+  }
+}
+
+/*=============================
+// etn settings
+===============================-- */
+
+.etn-wrap {
+  padding: 20px;
+  background-color: $white-color;
+
+  &.wrap>h2:first-child {
+    font-weight: 600;
+    font-size: 30px;
+    margin-bottom: 25px;
+    position: relative;
+    padding-left: 40px;
+
+    &:before {
+      content: "\f111";
+      position: absolute;
+      left: 0;
+      font-family: "dashicons";
+      top: 0;
+      font-size: 30px;
+      line-height: 60px;
+      color: $primary-color;
+    }
+  }
+
+  form h2 {
+    font-size: 24px;
+    position: relative;
+    margin-bottom: 25px;
+    font-weight: 600;
+
+    &:after {
+      position: absolute;
+      left: 0;
+      bottom: -15px;
+      width: 60px;
+      height: 4px;
+      background: $primary-color;
+      content: "";
+    }
+  }
+
+  //   nav tab wrapper
+  h2.nav-tab-wrapper {
+    margin-bottom: 30px;
+    border-bottom: none;
+
+    .nav-tab {
+      margin: 0 -1px 0 0;
+      background-color: #fff;
+      color: #707070;
+      font-size: 16px;
+      line-height: 18px;
+      font-weight: 600;
+      border: none !important;
+      border: 1px solid #ededed !important;
+      padding: 14px 25px;
+      text-decoration: none;
+
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+
+      &.nav-tab-active {
+        background-color: $primary-color;
+        background-image: linear-gradient(80deg,
+            #45137b 0%,
+            $primary-color 100%);
+        color: $white-color;
+      }
+
+      &:first-child {
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+      }
+
+      &:last-child {
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+    }
+  }
+
+  .form-table {
+    margin-bottom: 30px;
+  }
+}
+
+/*=============================
+// etn label item
+===============================-- */
+
+.etn-label-item {
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 20px 30px;
+  align-items: center;
+  @include border-radius(5px);
+
+  .etn-name-fields {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: 1rem;
+
+    &>* {
+      flex: 1;
+    }
+  }
+
+  .etn-label {
+    margin-right: 40px;
+    margin-bottom: 15px;
+
+    @media (min-width: 1600px) {
+      margin-bottom: 0;
+    }
+
+    label {
+      font-size: 14px;
+      line-height: 22px;
+      font-weight: 600;
+      color: #0d165e;
+      display: inline-block;
+      margin-bottom: 3px;
+    }
+  }
+
+  .etn-desc {
+    font-size: 13px;
+    line-height: 18px;
+    color: #838790;
+    margin: 0 0 0px;
+    font-weight: 400;
+
+    p {
+      margin: 5px 0 0;
+    }
+  }
+
+  .etn-form-control {
+    background-color: $white-color;
+  }
+
+  .etn-setting-input,
+  .etn-form-control {
+    width: 240px;
+    height: 40px;
+    padding: 10px 16px;
+    border-radius: 5px;
+    border: 1px solid #e4e6eb;
+    font-size: 13px;
+    line-height: 16px;
+    color: #666;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+
+    &:focus {
+      border: 1px solid $primary-color;
+    }
+
+    @media (max-width: 767px) {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  .msg-control-box {
+    height: 90px;
+  }
+
+  select {
+    padding: 0 30px 0 15px;
+  }
+
+  // select 2
+  .select2-container {
+    width: 240px !important;
+
+    @media (max-width: 767px) {
+      width: 100% !important;
+      min-width: 190px;
+    }
+  }
+
+  .select2-selection--multiple {
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    background-color: #fff;
+
+    .select2-selection__rendered {
+      padding: 0 15px !important;
+      margin-bottom: 0 !important;
+
+      .select2-selection__choice {
+        background-color: #eef0f4 !important;
+        border: 1px solid transparent !important;
+        margin-right: 10px !important;
+        padding: 5px !important;
+        font-size: 13px;
+        margin-bottom: 5px;
+        font-weight: 500;
+        color: #0d165e;
+        text-transform: capitalize;
+      }
+
+      .select2-search__field {
+        min-height: 28px;
+        margin-top: 0;
+      }
+    }
+
+    .select2-selection__choice__remove {
+      color: #fff !important;
+      background: #0d165e;
+      width: 14px;
+      height: 14px;
+      line-height: 12px;
+      border-radius: 4px;
+      text-align: center;
+    }
+  }
+
+  .select2-selection--single {
+    height: 40px !important;
+    border: 1px solid var(--border);
+    font-size: 13px;
+    font-weight: 400;
+
+    .select2-selection__rendered {
+      line-height: 40px;
+      padding-left: 16px;
+    }
+
+    .select2-selection__arrow {
+      top: 10px;
+      right: 15px;
+      background: #fff url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23555%22%2F%3E%3C%2Fsvg%3E") no-repeat right 0px top 10%;
+
+      b {
+        display: none;
+      }
+    }
+  }
+
+  .select2-container--default.select2-container--focus .select2-selection--multiple,
+  .select2-container--default.select2-container--focus .select2-selection--single {
+    border-color: var(--border);
+  }
+
+  &:only-child,
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &.etn-label-banner,
+  &.etn-limit-event-ticket {
+    .etn-label {
+      max-width: 250px;
+
+      @media (min-width: 1400px) {
+        max-width: 400px;
+      }
+    }
+  }
+
+  &.etn-label-connection {
+    .etn-label {
+      max-width: 350px;
+
+      @media (min-width: 1400px) {
+        max-width: 450px;
+      }
+    }
+  }
+
+  .limit_info {
+    margin-top: 10px;
+
+    @media (min-width: 1600px) {
+      max-width: 70%;
+    }
+  }
+
+  &.etn-label-top {
+    .etn-label {
+      align-self: flex-start;
+    }
+  }
+
+  &.etn-label-social {
+    .etn-label {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.etn-pro {
+  a {
+    font-size: 12px;
+    font-weight: 700;
+    background-color: #fef6e6;
+    border: 1px solid #fb9e12;
+    display: inline-block;
+    color: #0a1018;
+    padding: 9px 10px;
+    border-radius: 5px;
+    line-height: 0.8;
+    text-decoration: none;
+    transition: all ease 0.3s;
+
+    &:hover {
+      background-color: darken(#fef6e6, 5%);
+    }
+  }
+}
+
+.etn-repeater-wrap {
+  >div:first-child {
+    margin-top: 20px;
+  }
+}
+
+.etn-walkthrough-item {
+  margin-bottom: 20px;
+
+  .etn-sub-title {
+    margin-bottom: 5px;
+  }
+
+  .etn-walkthrough-desc {
+    color: #838790;
+  }
+}
+
+.stripe-payment-methods {
+  width: 100%;
+  border: 1px solid #ebecef;
+  border-radius: 5px;
+  padding: 0 20px;
+  margin: 10px 0;
+
+  .etn-label-item {
+    padding: 20px 0;
+    border-bottom: 1px solid #ebecef;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &.currency-select-dropdown {
+      border-top: 1px solid #ebecef;
+    }
+  }
+}
+
+.etn-template-tags-box {
+  background-color: #eef1ff;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  border-left: 3px solid #5d5dff;
+}
+
+// webhook
+.etn-webhook-item-content {
+  width: 100%;
+  border: 1px solid #ebecef;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px 0;
+  display: none;
+}
+
+.etn-webhook-item-content .etn-label-item {
+  padding: 20px 0;
+  border-bottom: 1px solid #ebecef;
+}
+
+.etn-webhook-item-content .etn-label-item:last-child {
+  border-bottom: none;
+}
+
+.save-webhook-btn:disabled {
+  opacity: 0.5;
+}
+
+.etn-webhook-error {
+  display: block;
+  color: red;
+  border: 1px solid red;
+}
+
+// Remove button
+
+.etn-remove-btn {
+  height: 30px;
+  padding: 0;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-color: transparent;
+  border-radius: 50%;
+  font-size: 14px;
+  background-color: rgba($color: $primary-color, $alpha: 1);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+
+  &:hover {
+    background-color: rgba($color: $primary-color, $alpha: 0.6);
+  }
+}
+
+/*=============================
+// speaker info settings
+===============================-- */
+
+body.post-type-etn-speaker,
+body.post-type-etn-attendee,
+body.post-type-etn-schedule {
+
+  #etn_speaker_settings,
+  #etn_schedule_settings,
+  #etn_event_settings {
+    margin-top: -20px;
+  }
+
+  .wrap h1.wp-heading-inline {
+    font-weight: 600;
+  }
+
+  #etn_schedule_settings,
+  #etn_attendee_meta {
+    .inside {
+      padding: 0;
+    }
+
+    .etn-label-group {
+      background-color: #f6f7f7;
+      border-radius: 6px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+  }
+
+  #etn_speaker_settings {
+    .inside {
+      padding: 10px;
+      background-color: #f6f7f7;
+      border-radius: 6px;
+    }
+  }
+}
+
+#etn_speaker_settings,
+#etn_event_settings,
+#banner_settings,
+#etn_zoom_meeting_settings,
+#etn_report,
+#etn_attendee_meta,
+#etn_schedule_settings,
+#etn_rsvp_settings {
+  &.postbox {
+    border: 1px solid transparent;
+    box-shadow: none;
+  }
+
+  .postbox-header {
+    border-bottom: none;
+  }
+
+  .inside {
+    padding: 0 25px 12px;
+    margin-top: 0;
+  }
+
+  .hndle {
+    font-size: 20px;
+    margin-bottom: 10px;
+    padding-left: 0;
+    color: var(--blue);
+  }
+
+  .etn-label-item {
+    .msg-control-box {
+      height: 90px;
+      padding: 20px 25px;
+    }
+  }
+
+  .etn-modal-search-box {
+    margin-bottom: 15px;
+  }
+
+  .etn_speaker_socials,
+  .etn-social-clearfix {
+    .etn-repeater-wrap {
+      display: block;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .etn-form-control {
+      width: 25%;
+      float: left;
+      margin-right: 10px;
+    }
+
+    .etn-form-group.mb-2 {
+      i {
+        min-width: 20px;
+      }
+    }
+
+    .show-repeater-icon {
+      min-width: 20px;
+    }
+  }
+
+  .etn-social-icon-list {
+    i {
+      padding: 10px;
+      border: 1px solid #eaeaea;
+      cursor: pointer;
+    }
+  }
+
+  .etn-social-clearfix {
+    .btn-danger {
+      padding: 10px 10px;
+      border-radius: 50%;
+      line-height: 20px;
+    }
+
+    .social-repeater {
+      .add-social {
+        margin-top: 20px;
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+
+  .social-repeater {
+    width: 100%;
+
+    .etn-form-group {
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      i {
+        height: 40px;
+        line-height: 40px;
+        border: 1px solid #e4e6eb;
+        border-radius: 6px;
+        width: 40px;
+        text-align: center;
+        margin-right: 10px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+#etn_report {
+  &.postbox {
+    border-radius: 8px;
+    background: #fff;
+    border-color: transparent;
+    padding: 15px 30px 30px;
+
+    .hndle {
+      padding-left: 0;
+    }
+
+    .inside {
+      background: #e5e5e5;
+      border-radius: 8px;
+      padding: 20px;
+    }
+  }
+
+  .etn-order-report-wrap {
+    background-color: #fff;
+    padding-inline-start: 30px;
+    border-radius: 6px;
+    padding: 30px;
+
+    .etn-sub-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: #0d165e;
+      margin: 0 0 15px;
+    }
+
+    .etn-inner-wrap {
+      border: 1px solid #d8d9df;
+      padding: 0 30px;
+      border-radius: 6px;
+    }
+
+    .report-item {
+      padding: 20px 0;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid #d8d9df;
+      }
+
+      .label {
+        margin-bottom: 15px;
+        font-size: 13px;
+        color: #0d165e;
+      }
+    }
+  }
+}
+
+// banner settings for event single page
+#banner_settings {
+  .etn-meta .etn_switch_button_label:before {
+    content: attr(data-right);
+  }
+
+  .etn-meta label.etn_switch_button_label {
+    width: 65px;
+  }
+
+  .etn-label-item.banner_bg_color,
+  .etn-label-item.banner_bg_type,
+  .etn-label-item.banner_bg_image {
+    display: none;
+
+    .etn-label,
+    .etn-meta {
+      float: left;
+    }
+  }
+
+  .etn-meta input.etn-admin-control-input:checked+label.etn_switch_button_label:before {
+    content: attr(data-left);
+  }
+}
+
+/*=============================
+//  etn-settings-dashboard
+===============================-- */
+
+.etn-settings-dashboard {
+  .stuffbox {
+    background-color: transparent;
+  }
+
+  .attr-tab-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    margin-right: 20px;
+
+    .etn-settings-tab-content {
+      flex-grow: 1;
+      background: #ebecef;
+      border-radius: 8px;
+      padding: 20px;
+    }
+  }
+
+  .etn-settings-section {
+    margin-bottom: 30px;
+  }
+
+  h2.etn-main-title {
+    font-size: 22px;
+    line-height: 30px;
+    color: #101010;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #d2d5df;
+    font-weight: 700;
+    margin-bottom: 30px;
+
+    i {
+      font-size: 20px;
+      color: $primary-color;
+      background: rgba($primary-color, 0.13);
+      margin-right: 5px;
+      border-radius: 5px;
+      width: 36px;
+      height: 36px;
+      display: inline-block;
+      text-align: center;
+      line-height: 36px;
+    }
+  }
+
+  .etn-settings-tab {
+    .nav-tab-wrapper {
+      border-bottom: none;
+
+      @media (min-width: 768px) {
+        margin-left: 40px;
+      }
+
+      li {
+        display: inline-block;
+        margin-right: 5px;
+        margin-bottom: 0;
+
+        a {
+          float: none;
+          border: none;
+          display: flex;
+          align-items: center;
+          margin: 0;
+          background-color: transparent;
+          color: #77797e;
+          font-size: 18px;
+          line-height: 18px;
+          padding: 14px 22px;
+          text-decoration: none;
+          font-weight: 500;
+          @include border-radius(5px);
+          position: relative;
+          transition: all ease 0.2s;
+
+          svg {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+          }
+
+          .st0 {
+            fill: #77797e;
+          }
+
+          &:focus {
+            outline: none;
+            box-shadow: none;
+          }
+
+          &::after,
+          &::before {
+            content: url(../images/curve_right.png);
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            right: -15px;
+            z-index: 1;
+            bottom: 0;
+            opacity: 0;
+            transition: all ease 0.2s;
+
+            @media (max-width: 1023px) {
+              display: none;
+            }
+          }
+
+          &::before {
+            content: url(../images/curve_left.png);
+            left: -15px;
+          }
+        }
+
+        &.attr-active {
+          a {
+            background-color: #fff;
+            color: $primary-color;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+
+            svg {
+              path {
+                fill: $primary-color;
+              }
+            }
+
+            .st0 {
+              fill: $primary-color;
+            }
+
+            &::after,
+            &::before {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+
+      .etn-label-item {
+        &:last-child {
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+
+  .etn-admin-container {
+    border: none;
+    box-shadow: none;
+  }
+
+  .etn-shortcode-settings {
+    .etn-meta {
+      align-self: start;
+      float: none;
+      display: flex;
+
+      .attr-form-control {
+        margin-bottom: 8px;
+      }
+
+      .etn-desc {
+        max-width: 320px;
+      }
+
+      .etn_copy_button {
+        display: flex;
+        align-self: self-end;
+        padding: 12px 14px;
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .etn-api-connect-wrap {
+    @media (min-width: 1200px) {
+      text-align: right;
+    }
+
+    .etn-btn-text {
+      margin-bottom: 10px;
+    }
+
+    .api-keys-msg {
+      color: #ff7129;
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+
+  .etn-secret-key {
+    display: flex;
+    align-items: center;
+
+    span {
+      margin-left: 5px;
+      cursor: pointer;
+    }
+  }
+}
+
+.etn-settings-from {
+  .etn_submit_wrap {
+    margin-left: auto;
+    padding-bottom: 25px;
+    width: 100%;
+
+    @media (min-width: 1024px) {
+      width: calc(100% - 220px);
+    }
+  }
+}
+
+/*=============================
+schedule settings
+===============================-- */
+// Edit mode style for(schedule, speaker and attendee) post type pages
+#etn_schedule_settings,
+#etn_speaker_settings,
+#etn_attendee_meta {
+  padding: 20px;
+  border-radius: 6px;
+}
+
+#etn_schedule_settings,
+#etn_event_settings {
+  .etn-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: var(--blue);
+    padding: 0;
+  }
+
+  .etn-sub-title {
+    font-size: 15px;
+    color: #0d165e;
+    font-weight: 500;
+    margin-top: 0px;
+  }
+
+  .etn-event-shedule-collapsible {
+    background-color: #f2f2f2;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 0.8;
+    cursor: pointer;
+    @include border-radius(5px);
+
+    i {
+      float: right;
+      background: var(--pink);
+      color: #fff;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      border-radius: 4px;
+    }
+
+    .etn-arrow-icon {
+      float: right;
+      padding: 7px 0;
+      margin-right: 15px;
+    }
+  }
+
+  .etn-event-repeater-collapsible-content {
+    .etn-label-item {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.etn-event-repeater-wrap {
+  padding: 20px 30px;
+  background-color: var(--white);
+  border-radius: 5px;
+
+  .etn-repeater-item {
+    background: #f6f7f7;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 10px;
+    position: relative;
+
+    .etn-event-shedule-collapsible {
+      background-color: transparent !important;
+      padding: 0;
+    }
+
+    .etn-event-repeater-collapsible-content {
+      margin-top: 0;
+      border-radius: 6px;
+      margin-top: 20px;
+    }
+  }
+
+  .etn_schedule_topics {
+    padding: 20px;
+    border-radius: 6px;
+    background-color: #f6f7f7;
+
+    .etn-event-repeater-collapsible-content {
+      background-color: transparent;
+    }
+
+    .etn-repeater-item {
+      background-color: var(--white);
+
+      .etn-label-item {
+        background-color: #f6f7f7;
+
+        .etn-form-control {
+          background-color: var(--white);
+        }
+      }
+    }
+  }
+}
+
+.post-type-etn-schedule {
+  .etn-label-group {
+    margin-bottom: 0 !important;
+  }
+
+  .etn-event-repeater-wrap {
+    padding: 20px 0;
+    border-radius: 0;
+  }
+}
+
+/*=============================
+zoom metting settings
+===============================-- */
+
+#etn_zoom_meeting_settings,
+#etn_report,
+#etn_event_settings {
+  margin-top: 30px;
+
+  h2.hndle {
+    font-size: 20px;
+    color: var(--blue);
+    padding: 25px 25px 0;
+    margin-bottom: 0;
+  }
+
+  .inside {
+    padding: 0px 30px 30px 0;
+
+    @media (max-width: 1024px) {
+      padding: 0 15px 30px;
+    }
+  }
+
+  &.postbox {
+    border: 1px solid #f5f5f5;
+    box-shadow: none;
+    border-radius: 8px;
+  }
+}
+
+/*
+	Admin Dashboard Responsive Attendee overlapping issue fixed
+*/
+@media (max-width: 782px) {
+  .wp-list-table tr:not(.inline-edit-row):not(.no-items) td:not(.column-primary)::before {
+    position: static;
+  }
+}
+
+body.eventin_page_etn_fb_import,
+body.post-type-etn-zoom-meeting,
+body.post-type-etn-speaker,
+body.post-type-etn-schedule,
+body.eventin_page_etn_sales_report,
+body.eventin_page_etn_stripe_orders_report,
+body.post-type-etn-attendee,
+body.post-type-etn {
+  #wp-content-editor-addons {
+    background-color: transparent;
+  }
+
+  .wrap {
+    background-color: transparent;
+    padding: 20px 0 20px;
+    margin-top: 30px;
+    @include border-radius(10px);
+    margin-right: 20px;
+
+    input.page-title-action {
+      background: #5d5dff;
+      color: #fff;
+      border-radius: 4px;
+      border: 1px solid #5d5dff;
+      padding: 5px 8px;
+    }
+  }
+
+  .wrap h1.wp-heading-inline {
+    font-weight: 600;
+    font-size: 22px;
+  }
+
+  .search-box input[type="search"],
+  .tablenav .actions select {
+    padding: 10px 25px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -ms-border-radius: 8px;
+    border: 1px solid #ededed;
+    font-size: 14px;
+    line-height: 16px;
+    color: #666;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  .tablenav .actions select {
+    border-color: #ffffff;
+    padding: 10px 32px 10px 16px;
+  }
+
+  .search-box input[type="search"] {
+    padding: 10px 36px 10px 16px;
+    margin: 0;
+  }
+
+  #search-submit {
+    padding: 4px 20px;
+    right: 0;
+    border: none;
+    background-color: $primary-color;
+    color: #fff;
+    font-weight: 600;
+    @include border-radius(5px);
+  }
+
+  .tablenav {
+    margin: 10px 0 30px;
+    padding-bottom: 10px;
+
+    .button {
+      padding: 0 20px;
+      border: none;
+      @include border-radius(5px);
+      font-weight: 600;
+      outline: none;
+      border: 1px solid #0073aa;
+      font-size: 14px;
+      line-height: 36px;
+      color: #0073aa;
+      transition: all ease 0.4s;
+
+      &:hover,
+      &:focus {
+        outline: none;
+        color: #fff;
+        background-color: #0073aa;
+      }
+    }
+
+    .tablenav-pages {
+      .button {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        line-height: 34px;
+        color: #2f4858;
+        padding: 0;
+        border-color: rgba(0, 0, 0, 0.2);
+        min-height: 40px;
+        min-width: 40px;
+
+        &:hover {
+          background: #dcdee3;
+          color: #2f4858;
+          border-color: transparent;
+        }
+      }
+
+      .current-page {
+        margin: 0 2px 0 0;
+        font-size: 14px;
+        text-align: center;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+
+  .subsubsub {
+    margin-bottom: 25px;
+    padding: 20px 15px 15px;
+    width: 100%;
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 6px;
+    float: none;
+
+    li {
+      a {
+        font-weight: 600;
+        font-size: 16px;
+        outline: none;
+        color: #777b7d;
+        padding: 0 15px 21px;
+        position: relative;
+
+        @media (max-width: 404px) {
+          padding-left: 13px;
+          padding-right: 13px;
+        }
+
+        &:hover,
+        &:focus {
+          outline: none;
+          box-shadow: none;
+          border: none;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 5px;
+          background-color: #5d5dff;
+          border-radius: 10px 10px 0 0;
+          transition: all 0.3s ease-in-out;
+          transform: scale(0.9);
+          visibility: hidden;
+          opacity: 0;
+        }
+
+        &.current,
+        &:hover {
+          color: #5d5dff;
+
+          span {
+            color: inherit;
+          }
+
+          &::before {
+            visibility: visible;
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  .search-box {
+    margin: -77px 15px 0;
+    position: relative;
+
+    @media (max-width: 767px) {
+      margin: 0px 15px 0;
+    }
+
+    .button {
+      padding: 4px 20px;
+      border: none;
+      background-image: url(../images/search-icon.svg);
+      background-repeat: no-repeat;
+      position: relative;
+      text-indent: -9999px;
+      background-position: center center;
+      background-color: transparent !important;
+      position: absolute;
+      right: 10px;
+      top: 0;
+      text-transform: unset;
+      min-height: 38px;
+      max-height: 38px;
+    }
+  }
+
+  .wp-header-end {
+    visibility: visible;
+    margin: 0;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border-top-color: #ededed;
+    border-bottom: none;
+  }
+
+  #post-body #normal-sortables {
+    min-height: 1px;
+  }
+
+  .wp-heading-inline+.page-title-action {
+    background-color: $primary-color;
+    color: #fff;
+    border: none;
+    padding: 6px 8px;
+    @include border-radius(5px);
+    outline: none;
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+      border: none;
+    }
+  }
+
+  .wp-list-table {
+    border: none;
+    margin-bottom: 30px;
+
+    thead,
+    tfoot {
+      tr {
+        box-shadow: 0px 4px 20px rgb(0 0 0 / 6%);
+        border-radius: 8px 8px 0 0;
+        background-color: #e1e3e8;
+
+        th {
+          line-height: 25px;
+          color: #000;
+          font-size: 15px;
+          font-weight: 500;
+          padding-left: 20px;
+          border-color: #e4e6eb;
+
+          a {
+            color: inherit;
+          }
+        }
+
+        .check-column,
+        td {
+          border-color: #e4e6eb;
+        }
+
+        .manage-column.column-title,
+        .manage-column.column-etn_event {
+          width: 180px;
+        }
+
+        .manage-column.column-id {
+          width: 50px;
+        }
+      }
+    }
+
+    #the-list {
+      tr {
+        background-color: #f7f8f9;
+
+        &:nth-child(odd) {
+          background-color: #ffffff;
+        }
+
+        td {
+          padding: 24px 10px 30px 30px;
+          color: #000;
+          font-size: 15px;
+        }
+
+        .id.column-id,
+        .column-etn_attendee_extra_field_main_extra_field {
+          padding-left: 20px;
+        }
+
+        .check-column {
+          padding: 28px 0 0 0;
+        }
+
+        td,
+        th {
+          border-bottom: 1px solid #eaeaea;
+          font-size: 15px;
+        }
+      }
+    }
+
+    .check-column,
+    .ticket_status_wrap {
+      padding-left: 0;
+
+      input {
+        border: 1px solid #2f4858;
+        border-radius: 4px;
+        height: 20px;
+        width: 20px;
+      }
+
+      input[type="checkbox"] {
+        margin-left: 15px;
+      }
+
+      input[type="checkbox"]:checked {
+        background: #2f4858;
+        border-color: transparent;
+
+        &::before {
+          content: url("../fonts/check_mark.svg");
+          margin: 0;
+          height: 18px;
+          width: 11px;
+          top: 5px;
+          position: relative;
+          left: 3px;
+        }
+      }
+    }
+  }
+
+  .fixed .column-posts {
+    width: 80px;
+  }
+
+  th.sortable a span,
+  th.sorted a span {
+    line-height: 1;
+  }
+}
+
+body.post-type-etn-attendee {
+  .wp-list-table {
+
+    thead,
+    tfoot {
+      tr {
+        .manage-column.column-id {
+          width: 100px;
+        }
+
+        .column-etn_event {
+          padding-left: 20px;
+        }
+      }
+    }
+
+    #the-list {
+      tr td {
+        padding-left: 20px;
+
+        .ticket_status_wrap {
+          .etn_ticket_status {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+body.post-type-etn-schedule {
+  .wp-list-table {
+
+    thead,
+    tfoot {
+      tr {
+
+        .manage-column.column-id,
+        .column-title {
+          width: 100px;
+        }
+
+        .column-etn_event {
+          padding-left: 20px;
+        }
+      }
+    }
+  }
+}
+
+body.eventin_page_etn_fb_import,
+body.eventin_page_etn_fb_import {
+  .etn-admin-header {
+    margin-bottom: 0;
+  }
+
+  .wrap {
+    margin-top: 10px;
+  }
+}
+
+.etn-report-cell {
+  margin-left: 10px;
+}
+
+// ads banner
+.etn-notice-buy-pro-banner {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-color: $primary-color;
+  min-height: 190px;
+
+  .notice-banner-link {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .notice-dismiss:before {
+    color: #fff;
+  }
+}
+
+.etn-icon-get-pro {
+  font-size: 17px;
+  color: $primary-color;
+}
+
+.etn-text-get-pro {
+  color: $primary-color;
+  font-weight: bold;
+}
+
+.etn-plugin-meta-rate-icon {
+  color: $primary-color;
+  font-size: 10px;
+  display: inline-block;
+  vertical-align: baseline;
+  width: auto;
+}
+
+@media (max-width: 1600px) {
+  .etn-notice-buy-pro-banner {
+    min-height: 130px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .etn-notice-buy-pro-banner {
+    min-height: 100px;
+  }
+}
+
+.wpmet_pro_a_wrapper {
+  text-align: center;
+}
+
+// shortcode settings
+.shortcode-generator-main-wrap {
+  display: none;
+  overflow-x: auto;
+  overflow-y: scroll;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+button.etn-btn.s-generate-btn {
+  padding: 0 20px;
+  line-height: 20px;
+  margin-left: 15px;
+  height: 45px;
+  background-color: $primary-color;
+
+  &:hover {
+    background-color: $secondary-color;
+  }
+}
+
+.shortcode-generator-inner {
+  transform: translateY(10%);
+  width: 600px;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: #fff;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 18%);
+  border-radius: 10px;
+
+  .etn-setting-input,
+  .etn-form-control::placeholder,
+  .etn-form-control {
+    width: 100%;
+    height: 44px;
+    padding: 10px 25px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+
+    font-size: 14px;
+    line-height: 16px;
+    color: #666;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &:focus {
+      border: 1px solid $primary-color;
+    }
+  }
+
+  .etn-field-wrap {
+    margin-bottom: 20px;
+
+    select {
+      width: 100%;
+    }
+  }
+}
+
+.copy_shortcodes {
+  display: none;
+  margin-top: 20px;
+  padding: 0;
+}
+
+.shortcode-popup-close {
+  position: absolute;
+  right: -7px;
+  top: -5px;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  color: #fff;
+  text-align: center;
+  font-size: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+  background: #ddd;
+  border: 2px solid white;
+  padding: 0.1rem;
+}
+
+.etn-report-resend-emails.etn-btn-secondary {
+  cursor: text;
+}
+
+//   recurring meta field css
+.set_recurrence_item {
+  .etn-label {
+    padding-bottom: 25px;
+  }
+
+  .etn-meta {
+    width: 100%;
+
+    .etn-recurring-single-item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 20px;
+      justify-content: space-between;
+      background-color: #f6f7f7;
+      padding: 20px 30px;
+      border-radius: 6px;
+
+      .etn-form-control {
+        width: 180px;
+        background-color: var(--white);
+        background-position-x: 92%;
+      }
+
+      .event-multiple-span-days-holder {
+        display: flex;
+        align-items: center;
+
+        span {
+          display: block;
+          margin-left: 7px;
+          text-transform: capitalize;
+        }
+      }
+    }
+
+    .etn-recurring-event-every-label {
+      font-size: 14px;
+      font-weight: 600;
+
+      @media (min-width: 1025px) {
+        flex: 0 0 35%;
+        max-width: 35%;
+      }
+    }
+
+    .event-interval-week-name-container {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+    }
+  }
+}
+
+.etn-recurrence-item {
+  display: block;
+
+  >.etn-label {
+    width: 100%;
+  }
+}
+
+// recurrence meta end
+
+// event meta
+.etn-label-item {
+  .etn-meta {
+    position: relative;
+
+    .required-text {
+      position: absolute;
+      left: 0;
+      bottom: -20px;
+      color: #f00;
+      font-size: 12px;
+    }
+
+    .etn-input-select-warning {
+      display: block;
+      font-size: 13px;
+      color: #3a6fac;
+      font-weight: 500;
+      text-align: right;
+      padding: 10px 0 0;
+      line-height: 1;
+
+      a {
+        text-decoration: none;
+        border-bottom: 1px solid #3a6fac;
+      }
+    }
+
+    &.datepicker {
+      left: 0;
+      opacity: 1;
+      border: none;
+      box-shadow: none;
+      width: auto;
+      padding: 0;
+    }
+  }
+
+  &.etn-label-date {
+    .date-icon {
+      position: absolute;
+      left: 18px;
+      top: 12px;
+      width: 15px;
+    }
+
+    .etn-form-control {
+      padding-left: 40px;
+    }
+  }
+}
+
+// Event image upload remove button
+.essential_event_remove_image_button {
+  display: block;
+  background-color: #ff4a97;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  text-transform: capitalize;
+  font-size: 12px;
+}
+
+.etn_event_meta_field.banner {
+  gap: 20px;
+}
+
+.etn_event_upload_image_button img {
+  width: 100%;
+  max-width: 100% !important;
+  object-fit: cover;
+  max-height: 250px;
+}
+
+.etn-event-dashboard-recurrence {
+  color: #11142e;
+  font-weight: 500;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.etn-event-dashboard-recurrence-child {
+  background-color: #cfe8ff;
+}
+
+.etn-event-dashboard-recurrence-no {
+  background-color: #e8e9eb;
+}
+
+.etn-event-dashboard-recurrence-parent {
+  background-color: #9595ff;
+  color: #fff;
+}
+
+.wpmet-notice {
+  img {
+    max-width: 100% !important;
+    max-height: 100% !important;
+  }
+}
+
+#etn_attendee_meta {
+  .inside {
+    display: flex;
+    flex-direction: column;
+
+    .view-order-button {
+      order: 1;
+    }
+  }
+}
+
+/* Settings tab */
+
+// admin tab
+.etn-settings-tab-wrapper {
+  display: flex;
+  width: 100%;
+  background: #fff;
+
+  &.etn-settings-tab-style {
+    .etn-settings-nav {
+      li {
+        a {
+          cursor: pointer;
+
+          &::before {
+            content: "";
+            position: absolute;
+          }
+
+          &.etn-settings-active {
+            background: rgba(93, 93, 255, 0.13);
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+
+            svg {
+              opacity: 1;
+            }
+
+            &::before {
+              height: 28px;
+              opacity: 1;
+              visibility: visible;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .etn-settings-tab-content {
+    flex: 0 0 calc(100% - 250px);
+    background: #ededf8;
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+
+    @media (max-width: 767px) {
+      width: 100%;
+      flex: 0 0 100%;
+    }
+
+    #slug-options,
+    #color-options,
+    #groundhogg-options,
+    #facebook-events-options,
+    #googlemap-options,
+    #date-format-settings,
+    #attendee-settings,
+    #email-settings,
+    #parchase-report-settings,
+    #domain-registration,
+    #google-meet-options,
+    #facebook-events-options,
+    #eventin-ai-options {
+      display: none;
+    }
+  }
+}
+
+// admin tab style 2
+.etn-settings-shortcode {
+  .etn-settings-single-section {
+    background: #ededf8;
+    border-radius: 8px;
+    padding: 20px;
+  }
+
+  .shortcode-generator-wrap {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.etn-recaptcha-settings {
+  .etn-label-item {
+
+    &:last-child,
+    &:only-child {
+      margin-bottom: 0 !important;
+    }
+  }
+}
+
+#etn-attendee_data {
+  .etn-label-item {
+
+    &:last-child,
+    &:only-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// etn event tab
+.etn-tab-wrapper,
+.etn-settings-tab-wrapper {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+
+  .etn-tab,
+  .etn-settings-nav {
+    display: block;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -ms-border-radius: 0;
+    min-width: 185px;
+    flex: 0 0 185px;
+    border: none;
+    padding-top: 0;
+
+    @media (max-width: 1024px) {
+      flex: 0 0 100%;
+      margin-bottom: 30px;
+    }
+
+    >li {
+      display: block;
+      margin: 0;
+
+      >a {
+        padding: 13px 20px;
+        font-size: 13px;
+        border-top: 1px solid #ebecef;
+        position: relative;
+        background-color: #fff;
+        display: block;
+        font-weight: 600;
+        margin-right: 20px;
+        text-decoration: none;
+        color: #0d165e;
+        border-radius: 0;
+        text-transform: capitalize;
+        margin-bottom: -1px;
+        line-height: 1.4;
+        overflow: hidden;
+
+        @media (max-width: 1024px) {
+          margin-right: 0;
+        }
+
+        &:before {
+          width: 8px;
+          border: none;
+          left: -4px;
+          bottom: 0;
+          top: 0;
+          background: var(--blue);
+          height: 0px;
+          margin: auto;
+          border-radius: 10px;
+          content: "";
+          position: absolute;
+          @include transition();
+        }
+
+        svg {
+          position: absolute;
+          right: 18px;
+          fill: var(--blue);
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          opacity: 0;
+        }
+
+        &:hover,
+        &:focus {
+          outline: none;
+          box-shadow: none;
+        }
+
+        .etn-settings-active {
+          background: rgba($primary-color, 0.13);
+          border-top-right-radius: 6px;
+          border-bottom-right-radius: 6px;
+
+          &:before {
+            height: 28px;
+          }
+
+          svg {
+            opacity: 1;
+          }
+        }
+      }
+
+      &:first-child {
+        a {
+          border-color: transparent;
+        }
+      }
+
+      &.attr-active {
+        a {
+          background: rgba($primary-color, 0.13);
+          border-top-right-radius: 6px;
+          border-bottom-right-radius: 6px;
+
+          &:before {
+            height: 28px;
+          }
+
+          svg {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  .attr-tab-content {
+    background: #f6f7f7;
+    border-radius: 8px;
+    padding: 10px;
+    box-sizing: border-box;
+    flex: 0 0 calc(100% - 185px);
+
+    @media (max-width: 1024px) {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+.etn-settings-tab-wrapper {
+  .etn-settings-nav {
+    margin-left: -30px;
+    margin-top: 0;
+    width: 250px;
+    min-width: 250px;
+
+    @media (max-width: 767px) {
+      margin-left: 0;
+    }
+  }
+}
+
+.etn-ajax-loading {
+  position: relative;
+  cursor: not-allowed;
+
+  &:after {
+    content: url("../fonts/spinner.svg") !important;
+    position: absolute;
+    right: 4px;
+    top: calc(50% - 14px);
+    animation: spin 2s infinite linear !important;
+    z-index: 1;
+    filter: brightness(0);
+  }
+
+  .etn-sync-zoom {
+    padding-right: 24px;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+    transform-origin: center;
+  }
+
+  to {
+    transform: rotate(360deg);
+    transform-origin: center;
+  }
+}
+
+.etn-status-changing {
+  pointer-events: none !important;
+  opacity: 0.4;
+}
+
+.etn_ticket_status_label {
+  position: relative;
+  top: -1px;
+}
+
+.etn-ajax-loading:after {
+  left: 73px;
+  right: auto;
+  top: calc(50% - 10px);
+}
+
+.etn-generate-certificate {
+  position: relative;
+
+  &.etn-ajax-loading {
+    opacity: 0.6;
+
+    &:after {
+      left: calc(50% - 10px);
+      right: auto;
+      top: calc(50% - 16px);
+      transform: translate(-50%, -50%);
+      height: auto;
+    }
+  }
+}
+
+.ticket_status_msg {
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+  line-height: 14px;
+
+  &.status-success {
+    color: #198754;
+  }
+
+  &.status-failed {
+    color: #dc3545;
+  }
+}
+
+// ticket scanner
+#etn_ticket_scanner {
+  margin-left: 15px;
+  padding: 7px 8px;
+  font-size: 0.81rem;
+  line-height: 1.4;
+
+  &:hover {
+    background-color: var(--blue);
+  }
+}
+
+.woocommerce_section_hide,
+.groundhogg_section_hide,
+.stripe_section_hide,
+.googlemap_section_hide,
+.rsvp_section_hide {
+  display: none;
+}
+
+.woocommerce-payment-type {
+  width: 100%;
+  border: 1px solid #ebecef;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px 0;
+
+  .etn-label-item {
+    padding: 20px 0;
+    border-bottom: 1px solid #ebecef;
+
+    &:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    &:first-child {
+      padding-top: 0;
+    }
+  }
+}
+
+// Recurring tooltip style
+.etn-label-item.etn-recurrence-item {
+  position: relative;
+  overflow: visible;
+
+  &.set_recurrence_item {
+    &.etn_event_meta_field {
+      .etn-meta {
+        position: static;
+      }
+    }
+  }
+
+  .etn-recurring-event-warning {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 310px;
+    margin: 0;
+    padding: 0;
+    transform: translateY(-100%);
+    border-color: transparent;
+    box-shadow: 0px 10px 100px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: 0.3s ease;
+    visibility: hidden;
+    opacity: 0;
+
+    &::before {
+      content: "";
+      left: 50%;
+      bottom: 0;
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 10px 12px 0 12px;
+      border-color: #ffffff transparent transparent transparent;
+      transform: translateX(-50%) translateY(100%);
+    }
+
+    .etn-recurring-notice-title {
+      background-color: #3a6fac;
+      padding: 10px 20px;
+      border-radius: 3px 3px 0 0;
+
+      h3 {
+        color: #fff;
+        margin: 0;
+        font-size: 15px;
+      }
+    }
+
+    .etn-recurring-notice-content {
+      padding: 15px 20px;
+      font-size: 13px;
+      color: #11142e;
+    }
+  }
+}
+
+// tooltip
+.etn-tooltip-item {
+  overflow: visible;
+}
+
+.tooltip-wrap {
+  position: absolute;
+  top: -15px;
+  left: -37px;
+  width: 310px;
+  margin: 0;
+  padding: 0;
+  transform: translateY(-100%);
+  border-color: transparent;
+  box-shadow: 0 10px 100px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: 0.3s ease;
+  visibility: hidden;
+  opacity: 0;
+
+  &::before {
+    content: "";
+    left: 50%;
+    bottom: 0;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 12px 0 12px;
+    border-color: #ffffff transparent transparent transparent;
+    transform: translateX(-50%) translateY(100%);
+  }
+
+  h3 {
+    background-color: #3a6fac;
+    padding: 10px 20px;
+    border-radius: 3px 3px 0 0;
+    color: #fff;
+    margin: 0;
+    font-size: 15px;
+  }
+
+  .tooltip-content {
+    padding: 15px 20px;
+
+    p {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.4;
+      color: #11142e;
+    }
+  }
+}
+
+.etn-tooltip-item label {
+  position: relative;
+  display: inline-block;
+
+  &:hover {
+    .tooltip-wrap {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.tooltip-icon {
+  svg {
+    width: 15px;
+    height: 15px;
+    fill: #ff7129;
+    margin-left: 14px;
+  }
+}
+
+// addons page style
+.etn-addons-content {
+  padding-bottom: 35px;
+
+  .etn-main-title {
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .etn-desc {
+    font-size: 16px;
+    color: #71787c;
+    margin: 18px 0;
+  }
+}
+
+.etn-admin-sec {
+  padding: 20px;
+  margin: 40px 0;
+}
+
+@media (min-width: 1024px) {
+  .etn-admin-sec {
+    padding: 0 40px 0 20px;
+  }
+}
+
+.module-sec {
+  background: #fff;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  padding: 30px;
+}
+
+.etn-addon-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 28px;
+  margin-top: 12px;
+  color: #000;
+}
+
+.etn-addons-item {
+  padding: 30px;
+  margin-bottom: 20px !important;
+  display: flex;
+  min-height: 138px;
+  border: 1px solid #dee0e5;
+  position: relative;
+
+  .etn-label {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-right: 0;
+    margin-bottom: 0;
+
+    label {
+      font-size: 20px;
+      line-height: 1.2;
+      margin-bottom: 13px;
+    }
+
+    .etn-label-icon {
+      width: 64px;
+      height: 64px;
+      margin-right: 15px;
+
+      @media (min-width: 1600px) {
+        margin-right: 30px;
+      }
+    }
+
+    .etn-label-content {
+      margin-top: -7px;
+      max-width: 240px;
+    }
+
+    .etn-desc {
+      margin-bottom: 23px;
+    }
+  }
+
+  .etn-pro-deactive {
+    text-decoration: none;
+    color: #232323;
+  }
+
+  .etn-meta {
+    align-self: flex-start;
+  }
+
+  .etn-btn-text {
+    transition: all ease 0.4s;
+
+    &:hover {
+      background-color: #0073aa !important;
+      color: #fff;
+    }
+  }
+
+  .etn-warning-text {
+    color: #ff7129;
+  }
+
+  .demo-link {
+    li {
+      display: inline-block;
+
+      &:not(:last-child) {
+        margin-right: 15px;
+      }
+
+      a {
+        color: #3a6fac;
+        font-size: 15px;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+@media (min-width: 767px) {
+  .etn-addons-item {
+    flex-wrap: nowrap;
+  }
+}
+
+// Admin social icons style
+.etn-social-icon-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
+  gap: 5px;
+}
+
+// Select an a tag with data id google_meet_settings
+.etn-tab-wrapper {
+  a[data-id="visual_seat_map"] {
+    &:after {
+      content: "New";
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      background-color: #ff4a97;
+      padding: 3px;
+      border-radius: 4px;
+      line-height: 1;
+      position: absolute;
+      right: 10px;
+      top: 12px;
+      box-shadow: 0 4px 15px rgba(255, 74, 151, 0.4);
+    }
+  }
+
+  #visual_seat_map {
+    position: relative;
+  }
+
+  .seat-map-tooltip {
+    position: absolute;
+    background-color: #fff;
+    color: #000;
+    border-radius: 0 0 6px 6px;
+    border-top: 3px solid #3a6fac;
+    z-index: 1;
+    visibility: hidden;
+    right: -24px;
+    width: 200px;
+    bottom: 70px;
+    text-align: center;
+    box-shadow: 0 10px 100px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      right: 50%;
+      transform: translateX(50%);
+      border-style: solid;
+      border-width: 10px 10px 0 10px;
+      border-color: #fff transparent transparent transparent;
+    }
+  }
+}
+
+/*
+	RSVP and Attendee action button in 
+*/
+.event-list-action-button {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: rgb(93, 93, 255);
+  padding: 6px 8px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+
+  &:hover {
+    color: #fff;
+    background-color: rgba(93, 93, 255, 0.9);
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 5px;
+  }
+}
+
+@media (min-width: 783px) {
+  .table-view-list {
+    .column-actions {
+      text-align: center;
+    }
+  }
+}
+
+/* 
+* Extra Field Style 
+*/
+
+/* 
+* Attendee extra fields style
+*/
+
+.attendee_extra_main_block {
+  margin-bottom: 20px;
+
+  .etn-attendee-field {
+    display: inline-flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    background-color: #ebecef;
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 30px;
+    position: relative;
+    max-width: 94%;
+
+    @media (max-width: 1024px) {
+      align-items: flex-start;
+    }
+
+    input[type="checkbox"] {
+      margin-top: 2px;
+      margin-right: 5px;
+    }
+
+    .etn-form-control {
+      margin-right: 15px;
+      margin-bottom: 0;
+
+      @media (max-width: 1024px) {
+        margin-bottom: 10px;
+      }
+
+      @media (max-width: 425px) {
+        width: 100%;
+        margin: 0 0 10px;
+      }
+
+      background-color: #ffffff;
+      padding: 10px 15px;
+      color: #11142e;
+
+      &::placeholder {
+        color: #838790;
+      }
+    }
+
+    .etn-btn {
+      margin-left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &.attendee_extra_type_checkbox_block {
+      display: block;
+    }
+  }
+
+  select {
+    padding: 0 55px 0 15px;
+    height: 40px;
+    border: 1px solid #e4e6eb;
+    border-radius: 6px;
+    margin: 0 10px 0 0;
+    background-position: right 10px top 55%;
+
+    @media (max-width: 425px) {
+      width: 100%;
+      margin: 0 0 10px;
+    }
+  }
+
+  .etn_submit_wrap {
+    width: 100%;
+  }
+
+  .attendee_extra_type_radio_section {
+    margin-top: 20px;
+  }
+
+  .attendee_extra_type_checkbox_main_block {
+    width: 100%;
+    margin-top: 10px;
+
+    .etn-btn {
+      display: inline-flex;
+    }
+
+    .etn-attendee-field {
+      padding: 0;
+    }
+  }
+
+  .remove_attendee_extra_field {
+    &.etn-btn {
+      background-color: $primary-color;
+      @include border-radius(6px);
+      padding: 0;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      right: -40px;
+      top: 20px;
+
+      @media (max-width: 1440px) {
+        right: -25px;
+      }
+
+      &:hover {
+        background-color: rgba($color: $primary-color, $alpha: 0.7);
+      }
+    }
+  }
+
+  .attendee_extra_show_in_dashboard_wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+
+    @media (min-width: 1441px) {
+      margin-top: 0;
+    }
+  }
+
+  .attendee_extra_field_wrapper {
+    span {
+      display: block;
+      margin: -5px 0 20px 2px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #f42929;
+
+      @media (min-width: 1025px) {
+        margin: 5px 0 0 2px;
+      }
+
+      svg {
+        margin-right: 6px;
+        position: relative;
+        bottom: -4px;
+      }
+    }
+  }
+
+  .etn-form-control.etn-field-invalid {
+    border-color: #f42929;
+  }
+}
+
+.attendee_extra_type_checkbox_section {
+  display: inline-block;
+  margin: 10px 0 20px;
+}
+
+.attendee_extra_type_radio_main_block {
+  width: 100%;
+  margin: 20px 0;
+
+  .add_attendee_extra_type_radio_block {
+    display: inline-block !important;
+  }
+
+  .attendee_extra_type_radio_block {
+    position: relative;
+    padding: 0;
+    margin: 0 0 10px !important;
+    display: flex;
+  }
+
+  .attendee_extra_type_radio_note {
+    margin-bottom: 10px;
+    color: #857c7c;
+  }
+}
+
+.remove_attendee_extra_type_radio_field,
+.remove_attendee_extra_type_checkbox_field {
+  background: $primary-color;
+  font-size: 17px;
+  margin-left: 0;
+  margin-top: 0;
+  border-radius: 6px;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.remove_attendee_extra_type_checkbox_field {
+  margin-top: 10px;
+}
+
+.etn-event-report-action {
+
+  .etn-event-report-view-report,
+  .etn-event-report-view-event {
+    display: inline-block;
+  }
+}
+
+.etn-event-report-view-report,
+.etn-event-report-view-event {
+  .etn-btn.btn-primary {
+    font-size: 15px;
+    margin: 0;
+    padding: 0 10px;
+  }
+}
+
+.etn_attendee_extra_field_terms {
+  .etn-meta {
+    display: flex;
+    align-items: flex-end;
+  }
+}
+
+.post-type-etn-attendee {
+  .wp-list-table {
+    .etn-label-item {
+      display: table-cell;
+      background: transparent;
+    }
+  }
+}
+
+/* Password field style */
+.wpc_show_password {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  background: #ffffff;
+}
+
+dialog#importDialog {
+  z-index: 999;
+  border: none;
+  padding: 0;
+  border-radius: 0.5rem 0.5rem 0 0;
+  box-shadow: 0 4px 16px rgba(black, 0.22);
+  background: white;
+  width: 100%;
+  max-height: 50%;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &.is-active {
+    animation: animate-up-mobile 0.22s ease;
+
+    @media screen and (min-width: 767px) {
+      animation: fade-in-up 0.22s ease;
+      border-radius: 0.5rem;
+    }
+
+    &::backdrop {
+      opacity: 1;
+    }
+  }
+
+  input[type="file"] {
+    width: 350px;
+    max-width: 100%;
+    color: #444;
+    padding: 5px !important;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #555;
+
+    &::file-selector-button {
+      margin-right: 20px;
+      border: none;
+      background: #084cdf;
+      padding: 10px 20px;
+      border-radius: 10px;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.2s ease-in-out;
+
+      &:hover {
+        background: #0d45a5;
+      }
+    }
+  }
+
+  .drop-container {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px dashed #555;
+    color: #444;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
+
+    .drop-title {
+      color: #444;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      transition: color 0.2s ease-in-out;
+    }
+
+    &:hover {
+      background: #eee;
+      border-color: #111;
+
+      .drop-title {
+        color: #222;
+      }
+    }
+  }
+
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    padding: 1rem 1.5rem;
+  }
+
+  .modal-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    box-shadow: inset 0 -1px rgba(black, 0.1);
+    background: #f6f6f6;
+
+    .title {
+      margin: 0;
+    }
+
+    .close-modal {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      display: flex;
+      gap: 0.25rem;
+      justify-content: center;
+      align-items: center;
+      transition: 0.2s ease;
+      // padding: 1rem;
+      cursor: pointer;
+      background-color: #ddd;
+
+      .label {
+        position: relative;
+      }
+
+      &:hover {
+        background: rgba(black, 0.12);
+      }
+    }
+  }
+
+  .modal-body {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .modal-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    box-shadow: inset 0 1px rgba(black, 0.1);
+  }
+
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: 0.22s ease;
+    backdrop-filter: blur(8px);
+  }
+
+  &[data-size="M"] {
+    max-width: 320px;
+  }
+
+  &[data-size="L"] {
+    max-width: 640px;
+  }
+
+  &[data-size="XL"] {
+    max-width: 880px;
+  }
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+
+    /* Links inside the dropdown */
+    a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+
+      /* Change color of dropdown links on hover */
+      &:hover {
+        background-color: #ddd;
+      }
+    }
+  }
+
+  &:hover {
+
+    /* Show the dropdown menu on hover */
+    .dropdown-content {
+      display: block;
+    }
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(8rem);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes animate-up-mobile {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Button loading state */
+
+.button.button--loader {
+  display: flex;
+  align-items: center;
+}
+
+.button--loading:before {
+  content: " ";
+  width: 0.75em;
+  height: 0.75em;
+  margin-right: 0.5em;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  border-color: #3582c4 transparent #fff transparent;
+  animation: loading-spinner-animation 1s linear infinite;
+}
+
+@keyframes loading-spinner-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#Notifications {
+  $wp-admin-height: 32px;
+  position: fixed;
+  right: 32px;
+  top: calc($wp-admin-height + 10px);
+
+  div {
+    &.Notification {
+      display: table;
+      min-width: 250px;
+      box-shadow: 0 0 3px black;
+      border-radius: 10px;
+
+      div {
+        &.Content {
+          padding: 20px;
+        }
+
+        &.Image {
+          width: 60px;
+          height: 60px;
+          float: left;
+          background-size: cover;
+        }
+
+        &.ProgressDiv {
+          div {
+            height: 3px;
+            width: 0%;
+            box-shadow: 0 0 1px black;
+          }
+        }
+      }
+
+      h1 {
+        padding: 0;
+        margin: 0;
+      }
+
+      &.good {
+        background-color: #abffcd;
+
+        div {
+          &.Content {
+            color: #009e0a;
+          }
+
+          &.ProgressDiv {
+            div {
+              background-color: #009e0a;
+            }
+          }
+
+          &.Image {
+            background-image: url(https://magicdoor.co.za/images/codepen/good.jpg);
+          }
+        }
+      }
+
+      &.warning {
+        background-color: #ffc693;
+
+        div {
+          &.Content {
+            color: #c55c00;
+          }
+
+          &.ProgressDiv {
+            div {
+              background-color: #c55c00;
+            }
+          }
+
+          &.Image {
+            background-image: url(https://magicdoor.co.za/images/codepen/warning.jpg);
+          }
+        }
+      }
+
+      &.error {
+        background-color: #ff9593;
+
+        div {
+          &.Content {
+            color: #b30300;
+          }
+
+          &.ProgressDiv {
+            div {
+              background-color: #b30300;
+            }
+          }
+
+          &.Image {
+            background-image: url(https://magicdoor.co.za/images/codepen/error.jpg);
+          }
+        }
+      }
+    }
+  }
+
+  button {
+    background-color: #3498db;
+    color: white;
+    padding: 5px 10px;
+    border: 0;
+    border-radius: 5px;
+  }
+}
+
+// WooCommerce order page attendee table style
+.etn-table-view {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+
+  .etn-table-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+
+    &.etn-table-header {
+      font-weight: bold;
+      background-color: #f0f0f0;
+    }
+
+    .etn-column {
+      flex: 1;
+      padding: 8px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
