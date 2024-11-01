@@ -1,0 +1,78 @@
+.bialty-switch-radio {
+    overflow: hidden;
+    display: inline;
+}
+.bialty-switch-radio:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.switch-title {
+  margin-bottom: 6px;
+}
+
+.bialty-switch-radio input {
+    position: absolute !important;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    border: 0;
+    overflow: hidden;
+}
+
+.bialty-switch-radio label {
+  float: left;
+  background-color: #ddd;
+  box-shadow: 3px 3px 3px #eee;
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  text-shadow: none;
+  padding: 10px 15px;
+  border-right: 1px solid #c9c9c9;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition:    all 0.1s ease-in-out;
+  -ms-transition:     all 0.1s ease-in-out;
+  -o-transition:      all 0.1s ease-in-out;
+  transition:         all 0.1s ease-in-out;
+}
+.bialty-switch-radio label:hover {
+    cursor: pointer;
+}
+
+.bialty-switch-radio input:checked + label {
+  background-color: #6BBD6E;
+  box-shadow: 3px 3px 3px #ddf5de;
+  color: #fff;
+    
+}
+
+.bialty-switch-radio label:first-of-type {
+  border-radius: 0px 0 0 0px;
+  border-left: 1px solid #ddd;
+}
+.bialty-switch-radio label:last-of-type {
+  border-radius: 0 0px 0px 0;
+  border-right: 1px solid #ddd;
+}
+.bialty-switch-radio input:checked + label:last-of-type {
+  background-color: #999;
+  box-shadow: 3px 3px 3px #ddd;
+}
+.bialty-switch-radio label.bialty-disabled {
+    background-color: #cbcbcb;
+    color: #666;
+}
+
+.bialty-switch-radio .bialty-tooltip {
+    margin-top: 8px;
+    margin-left: 3px;
+    
+}
+.bialty-switch-radio .bialty-tooltip .bialty-tooltiptext {
+    width: 400px;
+	font-size: 12px;
+    padding: 10px 15px;
+}
