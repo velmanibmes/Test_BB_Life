@@ -1,0 +1,12 @@
+/* Frontend styles for the "Ultimate Member - Terms & Conditions" plugin. */
+
+.um-terms-conditions-account .um-field-area {
+	margin: 15px 0px;
+}
+.um-terms-conditions-post-content {
+	background-color: rgba(255, 255, 255, 0.5);
+	border: 1px solid #ddd;
+	color: #666666;
+	margin: 10px 0px;
+	padding: 10px;
+}
